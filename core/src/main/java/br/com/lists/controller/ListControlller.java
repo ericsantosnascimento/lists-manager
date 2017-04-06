@@ -12,7 +12,7 @@ import java.util.UUID;
  */
 
 @RestController
-@RequestMapping("lists")
+@RequestMapping("/lists")
 public class ListControlller {
 
     @RequestMapping(method = RequestMethod.GET)
@@ -21,10 +21,10 @@ public class ListControlller {
         return Collections.emptyList();
     }
 
-    @RequestMapping(value = "{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "{list_id}", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
-    public java.util.List<List> listById(@PathVariable("list_id") UUID listId, @RequestParam("id") UUID userId, @RequestParam("token") String token) {
-        return Collections.emptyList();
+    public List listById(@PathVariable("list_id") UUID listId, @RequestParam("id") UUID userId, @RequestParam("token") String token) {
+        return null;
     }
 
     @RequestMapping(method = RequestMethod.POST)

@@ -4,7 +4,7 @@ spring:
 server:
   host: 127.0.0.1
   port: 8080
-  contextPath: /sysapi
+  contextPath: /api/v0
   sessionTimeout: 30
 management:
   port: 8081

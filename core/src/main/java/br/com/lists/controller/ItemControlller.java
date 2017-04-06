@@ -1,4 +1,4 @@
-package br.com.Items.controller;
+package br.com.lists.controller;
 
 import br.com.lists.Item;
 import org.springframework.http.HttpStatus;
@@ -13,7 +13,7 @@ import java.util.UUID;
  */
 
 @RestController
-@RequestMapping("lists/{list_id}/items")
+@RequestMapping("/lists/{list_id}/items")
 public class ItemControlller {
 
     @RequestMapping(method = RequestMethod.GET)
@@ -24,26 +24,27 @@ public class ItemControlller {
 
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
-    public Item itemById(@PathVariable UUID id) {
+    public Item itemById(@PathVariable("list_id") UUID listId, @PathVariable UUID id) {
         return null;
     }
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public Item save(@RequestBody Item item) {
+    public Item save(@PathVariable("list_id") UUID listId, @RequestBody Item item) {
         return null;
     }
 
 
     @RequestMapping(method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
-    public Item update(@RequestBody Item item) {
+    public Item update(@PathVariable("list_id") UUID listId, @RequestBody Item item) {
         return null;
     }
 
     @RequestMapping(method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@RequestBody Item item) {
+    public void delete(@PathVariable("list_id") UUID listId, @RequestBody Item item) {
+
     }
 
 }
