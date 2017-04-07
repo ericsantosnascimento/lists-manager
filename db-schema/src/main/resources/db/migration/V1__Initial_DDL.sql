@@ -17,6 +17,8 @@ CREATE TABLE items (
     quantity integer,
     removed boolean NOT NULL,
     list_id uuid NOT NULL,
+    created_at timestamptz,
+    updated_at timestamptz,
     CONSTRAINT item_list_fk FOREIGN KEY (list_id) REFERENCES "lists" (id)
 
 );

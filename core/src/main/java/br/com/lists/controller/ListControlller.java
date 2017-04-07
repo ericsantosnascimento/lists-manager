@@ -65,7 +65,7 @@ public class ListControlller {
     @RequestMapping(value = "synchronize", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation(value = "Synchronize lists", notes = "Synchronize all device lists on the service the approach here will be all lists will be dropped and created again")
-    public java.util.List<List> synchronize(@RequestParam("id") UUID userId, @RequestParam("token") String token, @RequestBody java.util.List<List> lists) {
+    public java.util.List<List> synchronize(@RequestBody java.util.List<List> lists, @RequestParam("user_id") UUID userId, @RequestParam("token") String token) {
         return Collections.emptyList();
     }
 
