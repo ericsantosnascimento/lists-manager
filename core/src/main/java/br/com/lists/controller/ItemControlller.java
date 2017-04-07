@@ -30,7 +30,7 @@ public class ItemControlller {
     @RequestMapping(method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation(value = "Finds all items related to the provided lists", notes = "Will bring up all items releasted to this user and list")
-    public List<Item> getItemsByListId (@PathVariable("list_id") UUID listId, @RequestParam("user_id") UUID userId, @RequestParam("token") String token) {
+    public List<Item> getItemsByListId(@PathVariable("list_id") UUID listId, @RequestParam("user_id") UUID userId, @RequestParam("token") String token) {
         return itemService.getItemsByListId(listId, userId, token);
     }
 
@@ -65,9 +65,9 @@ public class ItemControlller {
 
     @RequestMapping(value = "synchronize", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
-    @ApiOperation(value = "Synchronize lists", notes = "Synchronize all device lists on the service the approach here will be all lists will be dropped and created again")
-    public java.util.List<br.com.lists.List> synchronize(@RequestBody List<Item> items, @RequestParam("user_id") UUID userId, @RequestParam("token") String token) {
-        return Collections.emptyList();
+    @ApiOperation(value = "Synchronize items from list lists", notes = "Synchronize all device lists on the service the approach here will be all lists will be dropped and created again")
+    public java.util.List<Item> synchronize(@PathVariable("list_id") UUID listId, @RequestBody List<ItemRequest> items, @RequestParam("user_id") UUID userId, @RequestParam("token") String token) {
+        return itemService.synchronize(listId, items, userId, token);
     }
 
 }

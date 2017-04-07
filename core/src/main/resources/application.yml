@@ -28,18 +28,18 @@ spring:
       hibernate:
         default_schema: public
 ---
-#spring:
-#  profiles: test
-#  flyway:
-#    enabled: true
-#  datasource:
-#    url: jdbc:h2:mem:testdb;MODE=PostgreSQL;DB_CLOSE_DELAY=- 1;DB_CLOSE_ON_EXIT=FALSE
-#    driverClassName: org.h2.Driver
-#    username: postgres
-#    password: postgres
-#    initialize: true
-#  driver: org.h2.Driver
-#  classpath: ./lib/h2-1.4.192.jar
-#  url: jdbc:h2:mem:testdb;MODE=PostgreSQL;DB_CLOSE_DELAY=- 1;DB_CLOSE_ON_EXIT=FALSE
-#  username: postgres
-#  password: postgres
+spring:
+  profiles: test
+  flyway:
+    enabled: true
+  datasource:
+    url: jdbc:h2:mem:testdb;MODE=PostgreSQL;DB_CLOSE_DELAY=- 1;DB_CLOSE_ON_EXIT=FALSE
+    driverClassName: org.h2.Driver
+    username: postgres
+    password: postgres
+    initialize: true
+  driver: org.h2.Driver
+  classpath: ./lib/h2-1.4.192.jar
+  url: jdbc:h2:mem:testdb;MODE=PostgreSQL;DB_CLOSE_DELAY=- 1;DB_CLOSE_ON_EXIT=FALSE
+  username: postgres
+  password: postgres

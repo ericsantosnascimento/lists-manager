@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collections;
 import java.util.UUID;
 
 /**
@@ -66,7 +65,7 @@ public class ListControlller {
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation(value = "Synchronize lists", notes = "Synchronize all device lists on the service the approach here will be all lists will be dropped and created again")
     public java.util.List<List> synchronize(@RequestBody java.util.List<List> lists, @RequestParam("user_id") UUID userId, @RequestParam("token") String token) {
-        return Collections.emptyList();
+        return listService.synchronize(lists, userId, token);
     }
 
 

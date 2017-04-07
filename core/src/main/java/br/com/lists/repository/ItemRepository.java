@@ -13,5 +13,7 @@ public interface ItemRepository extends CrudRepository<Item, UUID> {
 
     List<Item> findByListId(UUID listId);
 
+    void deleteByListId(UUID listId);
+
     Item findByIdAndListId(UUID itemId, UUID listId);
 }

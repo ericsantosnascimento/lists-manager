@@ -25,7 +25,7 @@ public class InviteController {
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation(value = "Accept the invite", notes = "accept the invite sent from one user")
     public List accept(@PathVariable("list_id") UUID listId, @RequestParam("invite_id") UUID inviteId, @RequestParam("id") UUID userId, @RequestParam("token") String token) {
-        return null;
+        return null;//mock
     }
 }
 
