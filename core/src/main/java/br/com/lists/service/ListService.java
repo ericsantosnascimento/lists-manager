@@ -34,7 +34,8 @@ public class ListService {
     public void delete(ListRequest listRequest, UUID userId, String token) {
         userService.checkUserSession(userId, token);
         List list = mapListRequestToList(listRequest, userId);
-        listRepository.delete(list);
+        list.setRemoved(true);
+        listRepository.save(list);
     }
 
     public java.util.List<List> getAllLists(UUID userId, String token) {

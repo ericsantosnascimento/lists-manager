@@ -18,12 +18,12 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/lists/{list_id}/items")
-public class ItemControlller {
+public class ItemController {
 
     private ItemService itemService;
 
     @Autowired
-    public ItemControlller(ItemService itemService) {
+    public ItemController(ItemService itemService) {
         this.itemService = itemService;
     }
 
@@ -63,7 +63,7 @@ public class ItemControlller {
         itemService.delete(itemRequest, listId, userId, token);
     }
 
-    @RequestMapping(value = "synchronize", method = RequestMethod.GET)
+    @RequestMapping(value = "synchronize", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation(value = "Synchronize items from list lists", notes = "Synchronize all device lists on the service the approach here will be all lists will be dropped and created again")
     public java.util.List<Item> synchronize(@PathVariable("list_id") UUID listId, @RequestBody List<ItemRequest> items, @RequestParam("user_id") UUID userId, @RequestParam("token") String token) {
