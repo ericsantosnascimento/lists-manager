@@ -1,21 +1,21 @@
-CREATE USER acme WITH password 'lists-app';
+CREATE USER listsapp WITH password 'listsapp';
 
---CREATE SCHEMA lists-app;
+--CREATE SCHEMA listsapp;
 
---GRANT USAGE ON SCHEMA lists-app TO lists-app;
-ALTER USER lists-app SET search_path = 'public';
+--GRANT USAGE ON SCHEMA listsapp TO listsapp;
+ALTER USER listsapp SET search_path = 'public';
 
--- ensure that user lists-app will have the needed privileges on new tables
+-- ensure that user listsapp will have the needed privileges on new tables
 ALTER DEFAULT PRIVILEGES
    IN SCHEMA PUBLIC
 GRANT SELECT, UPDATE, INSERT, DELETE ON TABLES
-   TO lists-app;
+   TO listsapp;
 
--- ensure that user lists-app will have the needed privileges on new sequences
+-- ensure that user listsapp will have the needed privileges on new sequences
 ALTER DEFAULT PRIVILEGES
    IN SCHEMA PUBLIC
 GRANT USAGE ON SEQUENCES
-   TO lists-app;
+   TO listsapp;
 
 -- ensure that new functions will not have default privilege in public schema
 ALTER DEFAULT PRIVILEGES

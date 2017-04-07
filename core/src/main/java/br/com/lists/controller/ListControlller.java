@@ -1,9 +1,10 @@
 package br.com.lists.controller;
 
-import br.com.lists.List;
-import io.swagger.annotations.Api;
+import br.com.lists.domain.List;
+import br.com.lists.request.ListRequest;
+import br.com.lists.service.ListService;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.SwaggerDefinition;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,45 +19,47 @@ import java.util.UUID;
 @RequestMapping("/lists")
 public class ListControlller {
 
-    /**
-     * how it works?
-     * @param userId
-     * @param token
-     * @return
-     */
+    private ListService listService;
+
+    @Autowired
+    public ListControlller(ListService listService) {
+        this.listService = listService;
+    }
+
     @RequestMapping(method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation(value = "Finds all user related lists", notes = "Will bring up all lists available for this user")
-    public java.util.List<List> list(@RequestParam("id") UUID userId, @RequestParam("token") String token) {
-        return Collections.emptyList();
+    public java.util.List<List> list(@RequestParam("user_id") UUID userId, @RequestParam("token") String token) {
+        return listService.getAllLists(userId, token);
     }
 
     @RequestMapping(value = "{list_id}", method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation(value = "Find by list Id", notes = "Get a specific list, list_id is mandatory")
-    public List listById(@PathVariable("list_id") UUID listId, @RequestParam("id") UUID userId, @RequestParam("token") String token) {
-        return null;
+    public List listById(@PathVariable("list_id") UUID listId, @RequestParam("user_id") UUID userId, @RequestParam("token") String token) {
+        return listService.getById(listId, userId, token);
     }
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    @ApiOperation(value = "Create list", notes = "Create a user list")
-    public List save(@RequestBody List list, @RequestParam("id") UUID userId, @RequestParam("token") String token) {
-        return null;
+    @ApiOperation(value = "Create list", notes = "Create list")
+    public List save(@RequestBody ListRequest listRequest, @RequestParam("user_id") UUID userId, @RequestParam("token") String token) {
+        return listService.save(listRequest, userId, token);
     }
 
 
     @RequestMapping(method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
-    @ApiOperation(value = "Update list", notes = "Update a user list")
-    public List update(@RequestBody List list, @RequestParam("id") UUID userId, @RequestParam("token") String token) {
-        return null;
+    @ApiOperation(value = "Update list", notes = "Update list")
+    public List update(@RequestBody ListRequest listRequest, @RequestParam("user_id") UUID userId, @RequestParam("token") String token) {
+        return listService.save(listRequest, userId, token);
     }
 
     @RequestMapping(method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @ApiOperation(value = "Delete list", notes = "Delete a user list")
-    public void delete(@RequestBody List list, @RequestParam("id") UUID userId, @RequestParam("token") String token) {
+    @ApiOperation(value = "Delete list", notes = "Delete list")
+    public void delete(ListRequest listRequest, @RequestParam("id") UUID userId, @RequestParam("token") String token) {
+        listService.delete(listRequest, userId, token);
     }
 
     @RequestMapping(value = "synchronize", method = RequestMethod.GET)

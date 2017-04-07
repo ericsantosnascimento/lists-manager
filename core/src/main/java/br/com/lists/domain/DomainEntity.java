@@ -5,29 +5,26 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.time.Instant;
+import java.util.UUID;
 
 @MappedSuperclass
 public class DomainEntity implements Serializable {
 
-    @Id
-    @GeneratedValue(generator = "system-uuid")
-    @GenericGenerator(name = "system-uuid", strategy = "uuid2")
-    private String id;
+    @JsonIgnore
+    private Timestamp createdAt;
 
     @JsonIgnore
-    private Instant createdAt;
-
-    @JsonIgnore
-    private Instant updatedAt;
+    private Timestamp updatedAt;
 
     @PrePersist
     protected void preCreate() {
-        this.createdAt = Instant.now();
+        this.createdAt = Timestamp.from(Instant.now());
     }
 
     @PreUpdate
     protected void preUpdate() {
-        this.updatedAt = Instant.now();
+        this.updatedAt = Timestamp.from(Instant.now());
     }
 }

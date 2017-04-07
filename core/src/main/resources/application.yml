@@ -11,16 +11,22 @@ management:
   security:
     enabled: false
 ---
-#spring:
-#  profiles: local
-#  datasource:
-#    url: jdbc:postgresql://postgres.local:5432/?&encoding=unicode
-#    driverClassName: org.postgresql.Driver
-#    username: postgres
-#    password: postgres
-#    testWhileIdle: true
-#    validationQuery: SELECT 1
-#    driver: org.postgresql.Driver
+spring:
+  profiles: local
+  datasource:
+    url: jdbc:postgresql://localhost:5432/?&encoding=unicode
+    username: postgres
+    password: postgres
+    testWhileIdle: true
+    validationQuery: SELECT 1
+  jpa:
+    hibernate:
+      ddl-auto: none
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    properties:
+      hibernate:
+        default_schema: public
 ---
 #spring:
 #  profiles: test

@@ -1,5 +1,6 @@
-package br.com.lists;
+package br.com.lists.request;
 
+import br.com.lists.List;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.immutables.value.Value;
@@ -14,9 +15,9 @@ import java.util.UUID;
  */
 @Value.Immutable
 @Value.Style(typeAbstract = {"*Template"}, typeImmutable = "*")
-@JsonSerialize(as = List.class)
-@JsonDeserialize(as = List.class)
-public interface ListTemplate {
+@JsonSerialize(as = ListRequest.class)
+@JsonDeserialize(as = ListRequest.class)
+public interface ListRequestTemplate {
 
     @Value.Default
     default UUID uuid() {

@@ -2,8 +2,10 @@ CREATE TABLE lists (
 
     id uuid PRIMARY KEY NOT NULL,
 	name VARCHAR(200) NOT NULL,
-    owner_id uuid NOT NULL,
-    removed boolean NOT NULL
+    user_id uuid NOT NULL,
+    removed boolean NOT NULL,
+    created_at timestamptz,
+    updated_at timestamptz
 
 );
 
