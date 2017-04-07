@@ -10,11 +10,13 @@ management:
   port: 8081
   security:
     enabled: false
+
+
 ---
 spring:
   profiles: local
   datasource:
-    url: jdbc:postgresql://localhost:5432/?&encoding=unicode
+    url: jdbc:postgresql://postgres.local:5432/?&encoding=unicode
     username: postgres
     password: postgres
     testWhileIdle: true

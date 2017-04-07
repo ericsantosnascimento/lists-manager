@@ -13,6 +13,15 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
+    <properties>
+        <project.mainClass>br.com.lists.ListServiceApplication</project.mainClass>
+        <spring-boot.version>1.5.1.RELEASE</spring-boot.version>
+        <postgresjdbc.version>9.4.1212</postgresjdbc.version>
+        <commons-lang3.version>3.4</commons-lang3.version>
+        <commons-collections.version>3.2.2</commons-collections.version>
+        <springfox-swagger2.version>2.3.0</springfox-swagger2.version>
+    </properties>
+
 
     <dependencyManagement>
         <dependencies>
@@ -90,12 +99,6 @@
         </dependency>
 
         <dependency>
-            <groupId>br.com.eric</groupId>
-            <artifactId>lists-manager-model</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-        <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
             <version>${springfox-swagger2.version}</version>
@@ -114,5 +117,33 @@
         </dependency>
 
     </dependencies>
+
+
+    <build>
+        <finalName>${project.parent.artifactId}-${project.parent.version}</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
+                <configuration>
+                    <mainClass>${project.mainClass}</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

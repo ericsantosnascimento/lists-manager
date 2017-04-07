@@ -1,6 +1,6 @@
-# Acme API
+# Lists Manager API
 
-My solution here was the simplest I built an Spring boot application to accomplish the requirements, everything exposed over restful API.
+My solution here was the simplest I built an Spring boot application to accomplish the requirements, everything exposed over rest API
 
 to build it -> mvn clean package.
 

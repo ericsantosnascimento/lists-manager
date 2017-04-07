@@ -1,6 +1,6 @@
 package br.com.lists.controller;
 
-import br.com.lists.List;
+import br.com.lists.domain.List;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
