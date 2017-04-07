@@ -1,5 +1,7 @@
 package br.com.lists.service;
 
+import br.com.lists.exception.ListServiceException;
+import br.com.lists.exception.UnauthorizedAccess;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -12,7 +14,7 @@ public class UserService {
 
     public boolean checkUserSession(UUID userId, String token) {
         if (!isUserLoggedIn(userId, token)) {
-            throw new RuntimeException("Unatorized");
+            throw new UnauthorizedAccess("Unauthorized access");
         }
         return true;
     }
