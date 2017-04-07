@@ -1,6 +1,5 @@
 package br.com.lists.service;
 
-import br.com.lists.exception.ListServiceException;
 import br.com.lists.exception.UnauthorizedAccess;
 import org.springframework.stereotype.Service;
 
